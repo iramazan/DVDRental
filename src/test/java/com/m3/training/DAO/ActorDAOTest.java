@@ -1,26 +1,55 @@
 package com.m3.training.DAO;
 
 import com.m3.training.SQLObject.Actor;
+import org.hibernate.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import java.util.Optional;
+import javax.persistence.EntityManager;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class ActorDAOTest {
 
-    ActorDAO actorDAO;
+    Actor actor;
+    ActorDAO objectUnderTest;
+    EntityManager mockEntityManager;
 
     @BeforeEach
     void before() {
-        actorDAO = new ActorDAO();
+        actor = mock(Actor.class);
+        Transaction mockTransaction = Mockito.mock(Transaction.class);
+        mockEntityManager = mock(EntityManager.class);
+        when(mockEntityManager.getTransaction()).thenReturn(mockTransaction);
+        objectUnderTest = new ActorDAO(mockEntityManager);
     }
 
     @Test
-    void test_ActorDAOTest_getByIDTest() {
-        Optional<Actor> result = actorDAO.getForID(9);
-        assertTrue(result.isPresent());
+    void test_ActorDAOTest_getByID() {
+        long id = 9;
+        objectUnderTest.getForID(id);
+        verify(mockEntityManager, times(1)).find(Actor.class, id);
     }
 
+    @Test
+    void test_ActorDAOTest_create() {
+        objectUnderTest.create(actor);
+        verify(mockEntityManager, times(1)).persist(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_update() {
+        objectUnderTest.update(actor);
+        verify(mockEntityManager, times(1)).merge(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_remove() {
+        long id = 9;
+        Actor mockActor = mock(Actor.class);
+        when(mockEntityManager.find(Actor.class, id)).thenReturn(mockActor);
+        objectUnderTest.remove(id);
+        verify(mockEntityManager, times(1)).remove(mockActor);
+    }
 }
