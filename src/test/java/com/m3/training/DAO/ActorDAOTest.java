@@ -2,9 +2,7 @@ package com.m3.training.DAO;
 
 import com.m3.training.SQLObject.Actor;
 import org.hibernate.Transaction;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.Mockito;
 
@@ -13,11 +11,12 @@ import javax.persistence.EntityManager;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ActorDAOTest {
 
     Actor actor;
-    ActorDAO objectUnderTest;
-    ActorDAO realObj;
+    GenericDAO<Actor> objectUnderTest;
+    GenericDAO<Actor> realObj;
     EntityManager mockEntityManager;
 
     @BeforeEach
@@ -26,8 +25,8 @@ public class ActorDAOTest {
         Transaction mockTransaction = Mockito.mock(Transaction.class);
         mockEntityManager = mock(EntityManager.class);
         when(mockEntityManager.getTransaction()).thenReturn(mockTransaction);
-        objectUnderTest = new ActorDAO(mockEntityManager);
-        realObj = new ActorDAO();
+        objectUnderTest = new GenericDAO<>(mockEntityManager, Actor.class);
+        realObj = new GenericDAO<>(Actor.class);
     }
 
     @AfterEach
@@ -72,6 +71,7 @@ public class ActorDAOTest {
     }
 
     @Test
+    @Order(1)
     void test_ActorDAOTest_createReal() {
         Actor actor = new Actor();
         actor.setActorID(600);
@@ -81,6 +81,7 @@ public class ActorDAOTest {
     }
 
     @Test
+    @Order(2)
     void test_ActorDAOTest_createAlreadyExists() {
         Actor actor = new Actor();
         actor.setActorID(2);
@@ -92,6 +93,7 @@ public class ActorDAOTest {
     }
 
     @Test
+    @Order(3)
     void test_ActorDAOTest_updateReal() {
         Actor actor = new Actor();
         actor.setActorID(600);
@@ -101,6 +103,7 @@ public class ActorDAOTest {
     }
 
     @Test
+    @Order(4)
     void test_ActorDAOTest_deleteReal() {
         long id = 600;
         realObj.remove(id);

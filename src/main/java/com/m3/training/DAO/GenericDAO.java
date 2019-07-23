@@ -5,10 +5,11 @@ import com.m3.training.SQLObject.DatabaseObject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 import java.util.List;
 import java.util.Optional;
 
-public class GenericDAO<T extends DatabaseObject> implements CRUD<T> {
+public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoCloseable {
 
     private final Class<T> typeParamClass;
     private final EntityManager entityManager;
@@ -52,9 +53,14 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T> {
 
     @Override
     public void create(T obj) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(obj);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(obj);
+            entityManager.getTransaction().commit();
+        } catch (RollbackException e) {
+            String msg = "Cannot create a new SQL object with index already in the table.";
+            throw new IllegalStateException(msg);
+        }
     }
 
     @Override
@@ -70,5 +76,10 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T> {
         Optional<T> result = Optional.ofNullable(entityManager.find(typeParamClass, id));
         result.ifPresent(entityManager::remove);
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public void close() {
+        entityManager.close();
     }
 }

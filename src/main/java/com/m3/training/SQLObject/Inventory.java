@@ -7,8 +7,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name="INVENTORY")
-
-public class Inventory {
+public class Inventory implements DatabaseObject {
 
     @Id
     @Column(name="INVENTORY_ID")

@@ -9,11 +9,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InventoryDAOTest {
-    InventoryDAO inventoryDAO;
+    GenericDAO<Inventory> inventoryDAO;
 
     @BeforeEach
     void before() {
-        inventoryDAO = new InventoryDAO();
+        inventoryDAO = new GenericDAO<>(Inventory.class);
     }
 
     @Test

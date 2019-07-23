@@ -1,6 +1,6 @@
 package com.m3.training.DAO;
 
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -17,8 +17,13 @@ public class CountryDAO implements CRUD<Country> {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracle-connection");
 		em = emf.createEntityManager();
 	}
-		
-	@Override
+
+    @Override
+    public List<Country> getAll() {
+        return null;
+    }
+
+    @Override
 	public Optional<Country> getForID(long id) {
 		Optional<Country> optionalCountry = Optional.ofNullable(this.em.find(Country.class, id));
 		return optionalCountry;
