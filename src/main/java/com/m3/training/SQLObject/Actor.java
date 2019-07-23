@@ -64,4 +64,12 @@ public class Actor implements DatabaseObject {
     public String toString() {
         return actorID + ": " + firstName + " " + lastName;
     }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
 }

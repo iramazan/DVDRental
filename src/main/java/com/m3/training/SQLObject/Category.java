@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="CATEGORY")
@@ -20,6 +22,9 @@ public class Category implements DatabaseObject {
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Film> films = new ArrayList<>();
 
     public long getCategoryID() {
         return categoryID;
@@ -43,5 +48,13 @@ public class Category implements DatabaseObject {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 }

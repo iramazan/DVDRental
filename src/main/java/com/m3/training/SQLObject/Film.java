@@ -58,7 +58,41 @@ public class Film implements DatabaseObject{
             name = "film_actor",
             joinColumns = {@JoinColumn(name = "film_id")},
             inverseJoinColumns = {@JoinColumn(name = "actor_id")})
-    List<Actor> actors = new ArrayList<>();
+    private List<Actor> actors = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable (
+            name = "film_category",
+            joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")})
+    private List<Actor> categories = new ArrayList<>();
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public List<Actor> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Actor> categories) {
+        this.categories = categories;
+    }
+
+    public List<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(List<Store> stores) {
+        this.stores = stores;
+    }
+
+    @ManyToMany(mappedBy = "films")
+    private List<Store> stores = new ArrayList<>();
 
     public long getFilmID() {
         return filmID;

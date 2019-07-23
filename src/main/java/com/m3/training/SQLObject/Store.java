@@ -4,6 +4,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="STORE")
@@ -26,6 +28,13 @@ public class Store implements DatabaseObject {
 
     @Column(name="REGION")
     private String region;
+
+    @ManyToMany
+    @JoinTable (
+            name = "inventory",
+            joinColumns = {@JoinColumn(name = "store_id")},
+            inverseJoinColumns = {@JoinColumn(name = "film_id")})
+    private List<Film> films = new ArrayList<>();
 
     public long getStoreID() {
         return storeID;
@@ -65,5 +74,13 @@ public class Store implements DatabaseObject {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 }
