@@ -4,6 +4,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="ACTOR")
@@ -22,6 +24,9 @@ public class Actor implements DatabaseObject {
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
+
+    @ManyToMany(mappedBy = "actors")
+    private List<Film> films = new ArrayList<>();
 
     public long getActorID() {
         return actorID;

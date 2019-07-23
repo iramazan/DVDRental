@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Clob;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="FILM")
@@ -50,6 +52,13 @@ public class Film implements DatabaseObject{
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
+
+    @ManyToMany
+    @JoinTable (
+            name = "film_actor",
+            joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "actor_id")})
+    List<Actor> actors = new ArrayList<>();
 
     public long getFilmID() {
         return filmID;
