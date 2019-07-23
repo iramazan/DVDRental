@@ -1,5 +1,7 @@
 package com.m3.training.SQLObject;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name="CITY")
 public class City implements DatabaseObject {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="CITY_ID")
 	private long cityId;
 	
@@ -21,6 +24,11 @@ public class City implements DatabaseObject {
 	
 	@Column(name="COUNTRY_ID")
 	private int countryId;
+	
+    @UpdateTimestamp
+    @Column(name=
+    "LAST_UPDATE")
+    private Date lastUpdate;
 
 	public long getCityId() {
 		return cityId;
@@ -44,5 +52,13 @@ public class City implements DatabaseObject {
 
 	public void setCountryId(int countryId) {
 		this.countryId = countryId;
+	}
+
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 }

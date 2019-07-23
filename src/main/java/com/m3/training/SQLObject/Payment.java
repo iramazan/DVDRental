@@ -7,8 +7,6 @@ import java.sql.Date;
 
 @Entity
 @Table(name="INVENTORY")
-
-
 public class Payment {
     @Id
     @Column(name="PAYMENT_ID")
