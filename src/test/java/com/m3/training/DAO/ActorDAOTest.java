@@ -52,4 +52,24 @@ public class ActorDAOTest {
         objectUnderTest.remove(id);
         verify(mockEntityManager, times(1)).remove(mockActor);
     }
+
+    @Test
+    void test_ActorDAOTest_updateNotExist() {
+        Actor actor = new Actor();
+        actor.setFirstName("John");
+        actor.setLastName("Smith");
+        ActorDAO dao = new ActorDAO();
+        dao.update(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_createReal() {
+        Actor actor = new Actor();
+        actor.setActorID(600);
+        actor.setFirstName("John");
+        actor.setLastName("Smith");
+        ActorDAO dao = new ActorDAO();
+        System.out.println(actor);
+        dao.create(actor);
+    }
 }

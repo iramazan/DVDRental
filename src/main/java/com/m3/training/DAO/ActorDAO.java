@@ -52,7 +52,7 @@ public class ActorDAO implements CRUD<Actor>, AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         entityManager.close();
     }
 }
