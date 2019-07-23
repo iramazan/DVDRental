@@ -25,8 +25,8 @@ public class Actor implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @ManyToMany(mappedBy = "actors")
-    private List<Film> films = new ArrayList<>();
+    @ManyToMany(mappedBy = "filmsActors")
+    private List<Film> actorsFilms = new ArrayList<>();
 
     public long getActorID() {
         return actorID;
@@ -66,10 +66,10 @@ public class Actor implements DatabaseObject {
     }
 
     public List<Film> getFilms() {
-        return films;
+        return actorsFilms;
     }
 
     public void setFilms(List<Film> films) {
-        this.films = films;
+        this.actorsFilms = films;
     }
 }

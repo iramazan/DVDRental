@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name="FILM")
-
 public class Film implements DatabaseObject{
     @Id
     @Column(name="FILM_ID")
@@ -58,41 +57,41 @@ public class Film implements DatabaseObject{
             name = "film_actor",
             joinColumns = {@JoinColumn(name = "film_id")},
             inverseJoinColumns = {@JoinColumn(name = "actor_id")})
-    private List<Actor> actors = new ArrayList<>();
+    private List<Actor> filmsActors = new ArrayList<>();
 
     @ManyToMany
     @JoinTable (
             name = "film_category",
             joinColumns = {@JoinColumn(name = "film_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")})
-    private List<Actor> categories = new ArrayList<>();
+    private List<Actor> filmsCategories = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "films")
+    private List<Store> storesWithThisFilm = new ArrayList<>();
 
     public List<Actor> getActors() {
-        return actors;
+        return filmsActors;
     }
 
     public void setActors(List<Actor> actors) {
-        this.actors = actors;
+        this.filmsActors = actors;
     }
 
     public List<Actor> getCategories() {
-        return categories;
+        return this.filmsCategories;
     }
 
     public void setCategories(List<Actor> categories) {
-        this.categories = categories;
+        this.filmsCategories = categories;
     }
 
     public List<Store> getStores() {
-        return stores;
+        return storesWithThisFilm;
     }
 
     public void setStores(List<Store> stores) {
-        this.stores = stores;
+        this.storesWithThisFilm = stores;
     }
-
-    @ManyToMany(mappedBy = "films")
-    private List<Store> stores = new ArrayList<>();
 
     public long getFilmID() {
         return filmID;
@@ -196,5 +195,34 @@ public class Film implements DatabaseObject{
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public List<Actor> getFilmsActors() {
+        return filmsActors;
+    }
+
+    public void setFilmsActors(List<Actor> filmsActors) {
+        this.filmsActors = filmsActors;
+    }
+
+    public List<Actor> getFilmsCategories() {
+        return filmsCategories;
+    }
+
+    public void setFilmsCategories(List<Actor> filmsCategories) {
+        this.filmsCategories = filmsCategories;
+    }
+
+    public List<Store> getStoresWithThisFilm() {
+        return storesWithThisFilm;
+    }
+
+    public void setStoresWithThisFilm(List<Store> storesWithThisFilm) {
+        this.storesWithThisFilm = storesWithThisFilm;
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
     }
 }

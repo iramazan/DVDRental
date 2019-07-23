@@ -9,8 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name="STORE")
-
-
 public class Store implements DatabaseObject {
     @Id
     @Column(name="STORE_ID")

@@ -6,8 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
-
+@Table(name = "PAYMENT")
 public class Payment implements DatabaseObject {
     @Id
     @Column(name="PAYMENT_ID")

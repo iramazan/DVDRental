@@ -8,6 +8,8 @@ import org.mockito.Mockito;
 
 import javax.persistence.EntityManager;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
@@ -68,6 +70,13 @@ public class ActorDAOTest {
         actor.setFirstName("John");
         actor.setLastName("Smith");
         realObj.update(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_getActors() {
+        long id = 2;
+        Optional<Actor> result = realObj.getForID(id);
+        result.ifPresent(actor -> actor.getFilms().forEach(System.out::println));
     }
 
     @Test

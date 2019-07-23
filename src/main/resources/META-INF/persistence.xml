@@ -6,6 +6,7 @@
     <persistence-unit name="oracle-connection" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.m3.training.SQLObject.Actor</class>
+        <class>com.m3.training.SQLObject.Film</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe" />
