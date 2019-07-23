@@ -1,11 +1,13 @@
 package com.m3.training.SQLObject;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="COUNTRY")
@@ -18,6 +20,10 @@ public class Country implements DatabaseObject {
 	@Column(name="country")
 	private String country;
 	
+    @UpdateTimestamp
+    @Column(name="LAST_UPDATE")
+    private Date lastUpdate;
+    
 	public long getCountry_id() {
 		return country_id;
 	}
@@ -29,6 +35,12 @@ public class Country implements DatabaseObject {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 	
 }

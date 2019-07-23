@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="STORE")
+
 
 public class Store implements DatabaseObject {
     @Id

@@ -2,13 +2,13 @@ package com.m3.training.SQLObject;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
-public class Inventory implements DatabaseObject {
+@Entity
+@Table(name="INVENTORY")
+
+public class Inventory {
 
     @Id
     @Column(name="INVENTORY_ID")

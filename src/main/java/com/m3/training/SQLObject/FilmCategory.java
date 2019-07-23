@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="FILM_CATEGORY")
 
 public class FilmCategory implements DatabaseObject {
     @Id

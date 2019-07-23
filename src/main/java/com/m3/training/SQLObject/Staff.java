@@ -7,7 +7,8 @@ import java.sql.Blob;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="STAFF")
+
 
 public class Staff implements DatabaseObject {
     @Id
