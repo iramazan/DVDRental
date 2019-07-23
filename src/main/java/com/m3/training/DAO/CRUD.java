@@ -8,3 +8,5 @@ public interface CRUD<T> {
     void update(T obj);
     void remove(long id);
 }
+
+

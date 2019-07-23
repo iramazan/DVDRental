@@ -2,16 +2,15 @@ package com.m3.training.SQLObject;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Blob;
 import java.sql.Date;
 
+@Entity
+@Table
+
 public class Staff {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="STAFF_ID")
     private long staffID;
 

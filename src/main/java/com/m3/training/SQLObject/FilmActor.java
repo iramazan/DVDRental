@@ -3,33 +3,32 @@ package com.m3.training.SQLObject;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Date;
 
-public class Inventory {
+@Entity
+@Table
 
+public class FilmActor {
     @Id
-    @Column(name="INVENTORY_ID")
-    private long inventoryID;
+    @Column(name="ACTOR_ID")
+    private long actorID;
 
     @Column(name="FILM_ID")
     private long filmID;
-
-    @Column(name="STORE_ID")
-    private long storeID;
 
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    public long getInventoryID() {
-        return inventoryID;
+    public long getActorID() {
+        return actorID;
     }
 
-    public void setInventoryID(long inventoryID) {
-        this.inventoryID = inventoryID;
+    public void setActorID(long actorID) {
+        this.actorID = actorID;
     }
 
     public long getFilmID() {
@@ -38,14 +37,6 @@ public class Inventory {
 
     public void setFilmID(long filmID) {
         this.filmID = filmID;
-    }
-
-    public long getStoreID() {
-        return storeID;
-    }
-
-    public void setStoreID(long storeID) {
-        this.storeID = storeID;
     }
 
     public Date getLastUpdate() {
