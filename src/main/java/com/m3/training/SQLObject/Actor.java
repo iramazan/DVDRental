@@ -6,11 +6,10 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="ACTOR")
 public class Actor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="ACTOR_ID")
     private long actorID;
 
@@ -54,5 +53,10 @@ public class Actor {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return actorID + ": " + firstName + " " + lastName;
     }
 }
