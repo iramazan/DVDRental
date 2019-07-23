@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.RollbackException;
+import java.util.List;
 import java.util.Optional;
 
 public class ActorDAO implements CRUD<Actor>, AutoCloseable {
@@ -19,6 +20,12 @@ public class ActorDAO implements CRUD<Actor>, AutoCloseable {
 
     public ActorDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+    @Override
+    public List<Actor> getAll() {
+        // TODO: Not implemented
+        return null;
     }
 
     @Override

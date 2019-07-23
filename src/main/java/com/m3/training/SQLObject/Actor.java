@@ -7,7 +7,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name="ACTOR")
-public class Actor {
+public class Actor implements DatabaseObject {
 
     @Id
     @Column(name="ACTOR_ID")

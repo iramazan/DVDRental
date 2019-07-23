@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CITY")
-public class City {
+public class City implements DatabaseObject {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
