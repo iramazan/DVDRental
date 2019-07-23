@@ -14,6 +14,7 @@ public class FilmText {
 	private String title;
 	@Column(name="description")
 	private String description;
+	
 	public long getFilmId() {
 		return filmId;
 	}
