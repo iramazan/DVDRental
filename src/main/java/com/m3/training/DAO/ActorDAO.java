@@ -5,6 +5,7 @@ import com.m3.training.SQLObject.Actor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 import java.util.Optional;
 
 public class ActorDAO implements CRUD<Actor>, AutoCloseable {
@@ -30,9 +31,14 @@ public class ActorDAO implements CRUD<Actor>, AutoCloseable {
 
     @Override
     public void create(Actor obj) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(obj);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(obj);
+            entityManager.getTransaction().commit();
+        } catch (RollbackException e) {
+            String msg = "Cannot add an object to the database that already exists.";
+            throw new IllegalStateException(msg);
+        }
     }
 
     @Override

@@ -2,18 +2,22 @@ package com.m3.training.DAO;
 
 import com.m3.training.SQLObject.Actor;
 import org.hibernate.Transaction;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.Mockito;
 
 import javax.persistence.EntityManager;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class ActorDAOTest {
 
     Actor actor;
     ActorDAO objectUnderTest;
+    ActorDAO realObj;
     EntityManager mockEntityManager;
 
     @BeforeEach
@@ -23,6 +27,12 @@ public class ActorDAOTest {
         mockEntityManager = mock(EntityManager.class);
         when(mockEntityManager.getTransaction()).thenReturn(mockTransaction);
         objectUnderTest = new ActorDAO(mockEntityManager);
+        realObj = new ActorDAO();
+    }
+
+    @AfterEach
+    void after() {
+        realObj.close();
     }
 
     @Test
@@ -58,8 +68,7 @@ public class ActorDAOTest {
         Actor actor = new Actor();
         actor.setFirstName("John");
         actor.setLastName("Smith");
-        ActorDAO dao = new ActorDAO();
-        dao.update(actor);
+        realObj.update(actor);
     }
 
     @Test
@@ -68,8 +77,32 @@ public class ActorDAOTest {
         actor.setActorID(600);
         actor.setFirstName("John");
         actor.setLastName("Smith");
-        ActorDAO dao = new ActorDAO();
-        System.out.println(actor);
-        dao.create(actor);
+        realObj.create(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_createAlreadyExists() {
+        Actor actor = new Actor();
+        actor.setActorID(2);
+        actor.setFirstName("Nick");
+        actor.setLastName("Wahlberg");
+        Executable closure = () -> realObj.create(actor);
+        String msg = "Create should throw an illegal state exception if trying to create an object that already exists.";
+        assertThrows(IllegalStateException.class, closure, msg);
+    }
+
+    @Test
+    void test_ActorDAOTest_updateReal() {
+        Actor actor = new Actor();
+        actor.setActorID(600);
+        actor.setFirstName("Jan");
+        actor.setLastName("Smith");
+        realObj.update(actor);
+    }
+
+    @Test
+    void test_ActorDAOTest_deleteReal() {
+        long id = 600;
+        realObj.remove(id);
     }
 }
