@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
-public class Inventory {
+public class Inventory implements DatabaseObject {
 
     @Id
     @Column(name="INVENTORY_ID")

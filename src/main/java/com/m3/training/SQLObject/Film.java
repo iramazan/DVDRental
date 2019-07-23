@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table
 
-public class Film {
+public class Film implements DatabaseObject{
     @Id
     @Column(name="FILM_ID")
     private long filmID;

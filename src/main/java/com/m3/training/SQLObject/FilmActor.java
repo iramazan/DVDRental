@@ -11,7 +11,7 @@ import java.sql.Date;
 @Entity
 @Table
 
-public class FilmActor {
+public class FilmActor implements DatabaseObject {
     @Id
     @Column(name="ACTOR_ID")
     private long actorID;

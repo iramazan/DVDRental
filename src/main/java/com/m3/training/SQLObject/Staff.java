@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table
 
-public class Staff {
+public class Staff implements DatabaseObject {
     @Id
     @Column(name="STAFF_ID")
     private long staffID;

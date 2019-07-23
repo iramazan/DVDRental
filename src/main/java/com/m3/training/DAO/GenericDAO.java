@@ -12,24 +12,27 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T> {
 
     private final Class<T> typeParamClass;
     private final EntityManager entityManager;
+    private final String tableName;
 
     public GenericDAO(Class<T> typeParamClass) {
         // TODO: Add connection to properties file
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracle-connection");
         entityManager = emf.createEntityManager();
         this.typeParamClass = typeParamClass;
+        this.tableName = typeParamClass.getName().toUpperCase();
     }
 
     public GenericDAO(EntityManager entityManager, Class<T> typeParamClass) {
         this.entityManager = entityManager;
         this.typeParamClass = typeParamClass;
+        this.tableName = typeParamClass.getName().toUpperCase();
     }
 
     @Override
     public List<T> getAll() {
         // TODO: Add to properties file
         return entityManager
-                .createQuery("SELECT a FROM " + typeParamClass.getName() + " a", typeParamClass)
+                .createQuery("SELECT a FROM " + tableName + " a", typeParamClass)
                 .getResultList();
     }
 
@@ -39,6 +42,12 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T> {
         Optional<T> result = Optional.ofNullable(entityManager.find(typeParamClass, id));
         entityManager.getTransaction().commit();
         return result;
+    }
+
+    public <P> List<T> getForParam(String columnName, P columnVal) {
+        return entityManager
+                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " = " + columnVal, typeParamClass)
+                .getResultList();
     }
 
     @Override

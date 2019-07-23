@@ -8,7 +8,7 @@ import java.sql.Date;
 @Entity
 @Table
 
-public class Payment {
+public class Payment implements DatabaseObject {
     @Id
     @Column(name="PAYMENT_ID")
     private long paymentID;

@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table
 
-public class Category {
+public class Category implements DatabaseObject {
     @Id
     @Column(name="CATEGORY_ID")
     private long categoryID;
