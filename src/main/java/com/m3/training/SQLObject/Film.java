@@ -7,7 +7,7 @@ import java.sql.Clob;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="FILM")
 
 public class Film {
     @Id

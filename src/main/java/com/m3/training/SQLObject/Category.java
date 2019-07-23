@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name="CATEGORY")
 
 public class Category {
     @Id
