@@ -13,7 +13,7 @@ import oracle.sql.DATE;
 
 @Entity
 @Table(name="CUSTOMER")
-public class Customer {
+public class Customer implements DatabaseObject {
 	
 	@Id
 	@Column(name="CUSTOMER_ID")

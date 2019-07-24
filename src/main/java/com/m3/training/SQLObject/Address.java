@@ -11,7 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "ADDRESS")
-public class Address {
+public class Address implements DatabaseObject{
 
 	@Id
 	@Column(name = "ADDRESS_ID")

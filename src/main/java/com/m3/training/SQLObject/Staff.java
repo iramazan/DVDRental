@@ -8,8 +8,6 @@ import java.sql.Date;
 
 @Entity
 @Table(name="STAFF")
-
-
 public class Staff implements DatabaseObject {
     @Id
     @Column(name="STAFF_ID")

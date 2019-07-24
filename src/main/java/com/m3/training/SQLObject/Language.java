@@ -11,7 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="LANGUAGE")
-public class Language {
+public class Language  implements DatabaseObject{
 
 	@Id
 	@Column(name="LANGUAGE_ID")
