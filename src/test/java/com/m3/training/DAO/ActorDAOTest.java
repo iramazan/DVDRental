@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -75,8 +75,15 @@ public class ActorDAOTest {
     @Test
     void test_ActorDAOTest_getActors() {
         long id = 2;
+        int expectedActors = 25;
         Optional<Actor> result = realObj.getForID(id);
+        String msg = "Expected actor with id " + id + " to be in " + expectedActors + " films.";
         result.ifPresent(actor -> actor.getFilms().forEach(System.out::println));
+        if (result.isPresent()) {
+            assertEquals(expectedActors, result.get().getFilms().size(), msg);
+        } else {
+            fail();
+        }
     }
 
     @Test

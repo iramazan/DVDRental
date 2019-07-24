@@ -23,7 +23,7 @@ public class Category implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "filmsCategories")
     private List<Film> films = new ArrayList<>();
 
     public long getCategoryID() {

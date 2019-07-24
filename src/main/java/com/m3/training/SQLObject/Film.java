@@ -22,13 +22,13 @@ public class Film implements DatabaseObject{
     private Clob description;
 
     @Column(name="RELEASE_YEAR")
-    private long releaseYear;
+    private String releaseYear;
 
     @Column(name="LANGUAGE_ID")
     private long languageID;
 
     @Column(name="ORIGINAL_LANGUAGE_ID")
-    private long originalLanguageID;
+    private Long originalLanguageID;
 
     @Column(name="RENTAL_DURATION")
     private long rentalDuration;
@@ -43,17 +43,17 @@ public class Film implements DatabaseObject{
     private long replacementCost;
 
     @Column(name="RATING")
-    private long rating;
+    private String rating;
 
     @Column(name="SPECIAL_FEATURES")
-    private long specialFeatures;
+    private String specialFeatures;
 
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
     @ManyToMany
-    @JoinTable (
+    @JoinTable(
             name = "film_actor",
             joinColumns = {@JoinColumn(name = "film_id")},
             inverseJoinColumns = {@JoinColumn(name = "actor_id")})
@@ -117,11 +117,11 @@ public class Film implements DatabaseObject{
         this.description = description;
     }
 
-    public long getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(long releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -173,19 +173,19 @@ public class Film implements DatabaseObject{
         this.replacementCost = replacementCost;
     }
 
-    public long getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(long rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public long getSpecialFeatures() {
+    public String getSpecialFeatures() {
         return specialFeatures;
     }
 
-    public void setSpecialFeatures(long specialFeatures) {
+    public void setSpecialFeatures(String specialFeatures) {
         this.specialFeatures = specialFeatures;
     }
 
@@ -203,14 +203,6 @@ public class Film implements DatabaseObject{
 
     public void setFilmsActors(List<Actor> filmsActors) {
         this.filmsActors = filmsActors;
-    }
-
-    public List<Actor> getFilmsCategories() {
-        return filmsCategories;
-    }
-
-    public void setFilmsCategories(List<Actor> filmsCategories) {
-        this.filmsCategories = filmsCategories;
     }
 
     public List<Store> getStoresWithThisFilm() {

@@ -2,12 +2,14 @@ package com.m3.training.SQLObject;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="FILM_TEXT")
 public class FilmText {
-	
+
+    @Id
 	@Column(name="FILE_ID")
 	private long filmId;
 	@Column(name="title")

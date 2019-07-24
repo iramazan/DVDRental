@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,6 +13,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name="LANGUAGE")
 public class Language {
 
+	@Id
 	@Column(name="LANGUAGE_ID")
 	private long languageId;
 	
