@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FILM_TEXT")
-public class FilmText {
+public class FilmText implements DatabaseObject{
 	
 	@Column(name="FILE_ID")
 	private long filmId;
