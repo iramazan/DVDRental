@@ -29,12 +29,15 @@ public class Driver {
 					break;
 				case 1: 
 					getCustomerInfo();
+					break;
 				case 2: //TODO report film still check out, who are late, fees
 				case 3: //TODO what is due tomorrow
 				case 4: //TODO most popular movie
 				case 5: //TODO most popular categories
 				case 6: //TODO employee information
-				case 7: getMovies();
+				case 7:
+					getMovies();
+					break;
 				default : 
 					continue;
 			}
@@ -44,7 +47,7 @@ public class Driver {
 	private void getCustomerInfo() {
 		customerDAO = new GenericDAO<Customer>(Customer.class);
 		List<Customer>customers = customerDAO.getAll();
-		customers.forEach(customer ->{customer.toString();});
+		customers.forEach(System.out::println);
 	}
 	
 	private void getMovies() {

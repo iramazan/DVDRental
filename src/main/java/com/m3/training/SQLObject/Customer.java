@@ -9,8 +9,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-import oracle.sql.DATE;
-
 @Entity
 @Table(name="CUSTOMER")
 public class Customer implements DatabaseObject {
@@ -38,11 +36,12 @@ public class Customer implements DatabaseObject {
 	private char active;
 	
 	@Column(name="CREATE_DATE")
-	private DATE createDate;
+	private Date createDate;
 
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
+
 	public long getCustomerId() {
 		return customerId;
 	}
@@ -85,10 +84,10 @@ public class Customer implements DatabaseObject {
 	public void setActive(char active) {
 		this.active = active;
 	}
-	public DATE getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(DATE createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 	public Date getLastUpdate() {
