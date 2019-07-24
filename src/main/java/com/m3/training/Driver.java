@@ -1,17 +1,21 @@
 package com.m3.training;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.m3.training.DAO.GenericDAO;
 import com.m3.training.SQLObject.Customer;
 import com.m3.training.SQLObject.Film;
+import com.m3.training.SQLObject.Rental;
 
 
 public class Driver {
 	
 	private Scanner scanner;
 	private GenericDAO<Customer> customerDAO;
+	private GenericDAO<Rental> RentalDAO;
 	private GenericDAO<Film> filmDAO;
 	
 	public static void main(String[] args) {
@@ -45,9 +49,14 @@ public class Driver {
 	}
 	
 	private void getCustomerInfo() {
+		System.out.println("Enter cutomer's Last Name");
+		scanner = new Scanner(System.in);
+		String lastName = scanner.nextLine();
 		customerDAO = new GenericDAO<Customer>(Customer.class);
-		List<Customer>customers = customerDAO.getAll();
-		customers.forEach(System.out::println);
+		List<Customer> customers = customerDAO.getForParam("lastName", lastName.toUpperCase());
+		RentalDAO = new GenericDAO<Rental>(Rental.class);
+		Map<Customer, List<Rental>> customerInfo= new HashMap<>();
+		customerInfo.entrySet().forEach(entry->{entry.getKey().toString(); entry.getValue().toString();});
 	}
 	
 	private void getMovies() {
