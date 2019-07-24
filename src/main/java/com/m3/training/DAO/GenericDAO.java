@@ -20,13 +20,13 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracle-connection");
         entityManager = emf.createEntityManager();
         this.typeParamClass = typeParamClass;
-        this.tableName = typeParamClass.getSimpleName().toUpperCase();
+        this.tableName = typeParamClass.getSimpleName();
     }
 
     public GenericDAO(EntityManager entityManager, Class<T> typeParamClass) {
         this.entityManager = entityManager;
         this.typeParamClass = typeParamClass;
-        this.tableName = typeParamClass.getName().toUpperCase();
+        this.tableName = typeParamClass.getName();
     }
 
     @Override
