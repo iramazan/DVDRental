@@ -43,4 +43,13 @@ public class FilmCategory implements DatabaseObject {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "FilmCategory{" +
+                "filmID=" + filmID +
+                ", categoryID=" + categoryID +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }

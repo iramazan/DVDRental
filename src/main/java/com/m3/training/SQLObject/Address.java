@@ -102,4 +102,17 @@ public class Address {
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"addressId=" + addressId +
+				", address='" + address + '\'' +
+				", address2='" + address2 + '\'' +
+				", cityId=" + cityId +
+				", postalCode='" + postalCode + '\'' +
+				", phone='" + phone + '\'' +
+				", lastUpdate=" + lastUpdate +
+				'}';
+	}
 }

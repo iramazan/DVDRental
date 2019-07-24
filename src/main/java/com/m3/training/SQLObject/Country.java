@@ -42,5 +42,13 @@ public class Country implements DatabaseObject {
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Country{" +
+				"country_id=" + country_id +
+				", country='" + country + '\'' +
+				", lastUpdate=" + lastUpdate +
+				'}';
+	}
 }

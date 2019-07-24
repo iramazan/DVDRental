@@ -134,4 +134,20 @@ public class Staff implements DatabaseObject {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffID=" + staffID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addressID=" + addressID +
+                ", picture=" + picture +
+                ", email='" + email + '\'' +
+                ", storeID='" + storeID + '\'' +
+                ", active=" + active +
+                ", userName='" + userName + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }

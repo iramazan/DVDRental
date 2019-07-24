@@ -57,4 +57,14 @@ public class Category implements DatabaseObject {
     public void setFilms(List<Film> films) {
         this.films = films;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryID=" + categoryID +
+                ", name='" + name + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", films=" + films +
+                '}';
+    }
 }

@@ -59,4 +59,12 @@ public class City implements DatabaseObject {
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
+	@Override
+	public String toString() {
+		return "City{" +
+				"cityId=" + cityId +
+				", name='" + name + '\'' +
+				'}';
+	}
 }

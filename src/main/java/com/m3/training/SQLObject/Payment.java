@@ -86,4 +86,17 @@ public class Payment implements DatabaseObject {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentID=" + paymentID +
+                ", customerID=" + customerID +
+                ", staffID=" + staffID +
+                ", rentalID=" + rentalID +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }

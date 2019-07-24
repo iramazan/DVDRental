@@ -72,4 +72,6 @@ public class Actor implements DatabaseObject {
     public void setFilms(List<Film> films) {
         this.actorsFilms = films;
     }
+
+
 }

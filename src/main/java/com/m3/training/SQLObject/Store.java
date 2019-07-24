@@ -81,4 +81,16 @@ public class Store implements DatabaseObject {
     public void setFilms(List<Film> films) {
         this.films = films;
     }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "storeID=" + storeID +
+                ", managerStaffID=" + managerStaffID +
+                ", addressID=" + addressID +
+                ", lastUpdate=" + lastUpdate +
+                ", region='" + region + '\'' +
+                ", films=" + films +
+                '}';
+    }
 }

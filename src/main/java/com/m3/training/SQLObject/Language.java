@@ -45,5 +45,13 @@ public class Language {
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-  
+
+	@Override
+	public String toString() {
+		return "Language{" +
+				"languageId=" + languageId +
+				", language='" + language + '\'' +
+				", lastUpdate=" + lastUpdate +
+				'}';
+	}
 }

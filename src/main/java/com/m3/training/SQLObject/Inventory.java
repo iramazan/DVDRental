@@ -54,4 +54,14 @@ public class Inventory implements DatabaseObject {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "inventoryID=" + inventoryID +
+                ", filmID=" + filmID +
+                ", storeID=" + storeID +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }

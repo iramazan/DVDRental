@@ -91,4 +91,17 @@ public class Rental implements DatabaseObject {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "Rental{" +
+                "rentalID=" + rentalID +
+                ", rentalDate=" + rentalDate +
+                ", inventoryID=" + inventoryID +
+                ", customerID=" + customerID +
+                ", returnDate=" + returnDate +
+                ", staffID=" + staffID +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }
