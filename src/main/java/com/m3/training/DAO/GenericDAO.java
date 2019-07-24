@@ -51,6 +51,18 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
                 .getResultList();
     }
 
+    public <P> List<T> getForParamLessThan(String columnName, P upperBound) {
+        return entityManager
+                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " < " + upperBound, typeParamClass)
+                .getResultList();
+    }
+
+    public <P> List<T> getForParamGreaterThan(String columnName, P lowerbound) {
+        return entityManager
+                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " > " + lowerbound, typeParamClass)
+                .getResultList();
+    }
+
     @Override
     public void create(T obj) {
         try {
