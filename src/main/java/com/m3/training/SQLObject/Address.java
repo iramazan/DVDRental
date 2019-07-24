@@ -23,8 +23,8 @@ public class Address implements DatabaseObject{
 	@Column(name = "ADDRESS2")
 	private String address2;
 
-	@Column(name = "distrinct")
-	private String distrinct;
+	@Column(name = "district")
+	private String district;
 
 	@Column(name = "CITY_ID")
 	private long cityId;
@@ -63,12 +63,12 @@ public class Address implements DatabaseObject{
 		this.address2 = address2;
 	}
 
-	public String getDistrinct() {
-		return distrinct;
+	public String getDistrict() {
+		return district;
 	}
 
-	public void setDistrinct(String distrinct) {
-		this.distrinct = distrinct;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 	public long getCityId() {

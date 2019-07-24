@@ -37,7 +37,7 @@ public class Film implements DatabaseObject{
     private long rentalRate;
 
     @Column(name="LENGTH")
-    private long length;
+    private Long length;
 
     @Column(name="REPLACEMENT_COST")
     private long replacementCost;
@@ -157,11 +157,11 @@ public class Film implements DatabaseObject{
         this.rentalRate = rentalRate;
     }
 
-    public long getLength() {
+    public Long getLength() {
         return length;
     }
 
-    public void setLength(long length) {
+    public void setLength(Long length) {
         this.length = length;
     }
 

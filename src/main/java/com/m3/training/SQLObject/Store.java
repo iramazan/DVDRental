@@ -24,9 +24,6 @@ public class Store implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @Column(name="REGION")
-    private String region;
-
     @ManyToMany
     @JoinTable (
             name = "inventory",
@@ -66,14 +63,6 @@ public class Store implements DatabaseObject {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
     public List<Film> getFilms() {
         return films;
     }
@@ -89,7 +78,6 @@ public class Store implements DatabaseObject {
                 ", managerStaffID=" + managerStaffID +
                 ", addressID=" + addressID +
                 ", lastUpdate=" + lastUpdate +
-                ", region='" + region + '\'' +
                 ", films=" + films +
                 '}';
     }

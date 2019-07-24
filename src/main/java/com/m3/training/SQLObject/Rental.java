@@ -7,8 +7,6 @@ import java.sql.Date;
 
 @Entity
 @Table(name="RENTAL")
-
-
 public class Rental implements DatabaseObject {
 
     @Id

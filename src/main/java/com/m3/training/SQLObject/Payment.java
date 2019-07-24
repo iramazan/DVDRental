@@ -19,7 +19,7 @@ public class Payment implements DatabaseObject {
     private long staffID;
 
     @Column(name="RENTAL_ID")
-    private long rentalID;
+    private Long rentalID;
 
     @Column(name="AMOUNT")
     private long amount;
@@ -55,11 +55,11 @@ public class Payment implements DatabaseObject {
         this.staffID = staffID;
     }
 
-    public long getRentalID() {
+    public Long getRentalID() {
         return rentalID;
     }
 
-    public void setRentalID(long rentalID) {
+    public void setRentalID(Long rentalID) {
         this.rentalID = rentalID;
     }
 

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Clob;
 
 @Entity
 @Table(name="FILM_TEXT")
@@ -15,7 +16,7 @@ public class FilmText {
 	@Column(name="title")
 	private String title;
 	@Column(name="description")
-	private String description;
+	private Clob description;
 	
 	public long getFilmId() {
 		return filmId;
@@ -29,10 +30,10 @@ public class FilmText {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDescription() {
+	public Clob getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
+	public void setDescription(Clob description) {
 		this.description = description;
 	}
 
