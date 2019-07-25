@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 
 import javax.persistence.EntityManager;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,12 +79,31 @@ public class ActorDAOTest {
         int expectedActors = 25;
         Optional<Actor> result = realObj.getForID(id);
         String msg = "Expected actor with id " + id + " to be in " + expectedActors + " films.";
-        result.ifPresent(actor -> actor.getFilms().forEach(System.out::println));
         if (result.isPresent()) {
             assertEquals(expectedActors, result.get().getFilms().size(), msg);
         } else {
             fail();
         }
+    }
+
+    @Test
+    void test_ActorDAOTest_getActorByLastName() {
+        int expectedNumActors = 2;
+        String columnName = "lastName";
+        String lastName = "CHASE";
+        List<Actor> actors = realObj.getForParam(columnName, lastName);
+        String msg = "Getting Actors by last name " + lastName + " returns " + actors.size() + " actors.";
+        assertEquals(expectedNumActors, actors.size(), msg);
+    }
+
+    @Test
+    void test_ActorDAOTest_getActorByID() {
+        int expectedNumActors = 1;
+        String columnName = "actorID";
+        long idVal = 4;
+        List<Actor> actors = realObj.getForParam(columnName, idVal);
+        String msg = "Getting actors by id " + idVal + " returns " + actors.size() + " actors.";
+        assertEquals(expectedNumActors, actors.size(), msg);
     }
 
     @Test
