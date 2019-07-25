@@ -13,7 +13,6 @@ public class Rental implements DatabaseObject {
     @Column(name="RENTAL_ID")
     private long rentalID;
 
-
     @Column(name="RENTAL_DATE")
     private Date rentalDate;
 
@@ -22,7 +21,6 @@ public class Rental implements DatabaseObject {
 
     @Column(name="CUSTOMER_ID")
     private long customerID;
-
 
     @Column(name="RETURN_DATE")
     private Date returnDate;

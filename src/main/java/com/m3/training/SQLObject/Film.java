@@ -18,8 +18,9 @@ public class Film implements DatabaseObject{
     @Column(name="TITLE")
     private String title;
 
+    @Lob
     @Column(name="DESCRIPTION")
-    private Clob description;
+    private String description;
 
     @Column(name="RELEASE_YEAR")
     private String releaseYear;
@@ -109,11 +110,11 @@ public class Film implements DatabaseObject{
         this.title = title;
     }
 
-    public Clob getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Clob description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
