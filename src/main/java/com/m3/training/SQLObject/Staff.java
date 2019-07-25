@@ -5,6 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="STAFF")
@@ -44,6 +45,8 @@ public class Staff implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
+    @OneToMany(mappedBy = "staff")
+    private List<Rental> rentals;
 
     public long getStaffID() {
         return staffID;
@@ -131,6 +134,14 @@ public class Staff implements DatabaseObject {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
     }
 
     @Override
