@@ -31,6 +31,12 @@ public class Payment implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
+    @ManyToOne
+    private Rental rental;
+
+    @ManyToOne
+    private Staff staff;
+
     public long getPaymentID() {
         return paymentID;
     }
@@ -85,6 +91,14 @@ public class Payment implements DatabaseObject {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 
     @Override

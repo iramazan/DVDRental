@@ -33,7 +33,8 @@ public class Rental implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @OneToMany(mappedBy = "rental")
+    @OneToMany
+    @JoinColumn(name = "rental_id")
     private List<Payment> payments;
 
     public long getRentalID() {
@@ -90,6 +91,14 @@ public class Rental implements DatabaseObject {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     @Override
