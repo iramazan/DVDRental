@@ -45,6 +45,12 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
         return result;
     }
 
+    public List<T> getForParam(String columnName, String columnVal) {
+        return entityManager
+                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " = '" + columnVal + "'", typeParamClass)
+                .getResultList();
+    }
+
     public <P> List<T> getForParam(String columnName, P columnVal) {
     /*	System.out.println(this.tableName);*/
         return entityManager
