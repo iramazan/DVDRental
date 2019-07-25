@@ -3,7 +3,6 @@ package com.m3.training.SQLObject;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Clob;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;

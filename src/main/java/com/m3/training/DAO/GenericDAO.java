@@ -2,10 +2,9 @@ package com.m3.training.DAO;
 
 import com.m3.training.SQLObject.DatabaseObject;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.RollbackException;
+import javax.persistence.*;
+import java.lang.annotation.Annotation;
+import java.sql.Clob;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +46,7 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
 
     public List<T> getForParam(String columnName, String columnVal) {
         return entityManager
-                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " = '" + columnVal + "'", typeParamClass)
+                .createQuery("FROM " + tableName + " E WHERE STR(E." + columnName + ") = '" + columnVal + "'", typeParamClass)
                 .getResultList();
     }
 

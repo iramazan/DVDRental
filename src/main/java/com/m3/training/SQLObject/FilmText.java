@@ -1,9 +1,6 @@
 package com.m3.training.SQLObject;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Clob;
 
 @Entity
@@ -15,8 +12,10 @@ public class FilmText {
 	private long filmId;
 	@Column(name="title")
 	private String title;
+
+	@Lob
 	@Column(name="description")
-	private Clob description;
+	private String description;
 	
 	public long getFilmId() {
 		return filmId;
@@ -30,10 +29,10 @@ public class FilmText {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Clob getDescription() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDescription(Clob description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
