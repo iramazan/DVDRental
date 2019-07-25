@@ -26,7 +26,7 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
     public GenericDAO(EntityManager entityManager, Class<T> typeParamClass) {
         this.entityManager = entityManager;
         this.typeParamClass = typeParamClass;
-        this.tableName = typeParamClass.getName();
+        this.tableName = typeParamClass.getSimpleName();
     }
 
     @Override
@@ -52,8 +52,9 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
     }
 
     public <P> List<T> getForParam(String columnName, P columnVal) {
+    /*	System.out.println(this.tableName);*/
         return entityManager
-                .createQuery("FROM " + tableName + " E WHERE E." + columnName + " = " + columnVal, typeParamClass)
+                .createQuery("FROM " + this.tableName + " E WHERE E." + columnName + " = '" + columnVal + "'", typeParamClass)
                 .getResultList();
     }
 
