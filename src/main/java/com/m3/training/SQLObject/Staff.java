@@ -35,7 +35,7 @@ public class Staff implements DatabaseObject {
     @Column(name="ACTIVE")
     private long active;
 
-    @Column(name="USER_NAME")
+    @Column(name="USERNAME")
     private String userName;
 
     @Column(name="PASSWORD")
@@ -157,6 +157,7 @@ public class Staff implements DatabaseObject {
                 ", active=" + active +
                 ", userName='" + userName + '\'' +
                 ", lastUpdate=" + lastUpdate +
+                ", rentals=" + rentals +
                 '}';
     }
 }
