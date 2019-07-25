@@ -4,6 +4,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="RENTAL")
@@ -31,6 +32,9 @@ public class Rental implements DatabaseObject {
     @UpdateTimestamp
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
+
+    @OneToMany(mappedBy = "rental")
+    private List<Payment> payments;
 
     public long getRentalID() {
         return rentalID;
