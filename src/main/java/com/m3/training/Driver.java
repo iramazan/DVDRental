@@ -1,5 +1,4 @@
 package com.m3.training;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +10,7 @@ import com.m3.training.SQLObject.Actor;
 import com.m3.training.SQLObject.Customer;
 import com.m3.training.SQLObject.Film;
 import com.m3.training.SQLObject.Rental;
+import com.m3.training.SQLObject.Staff;
 
 
 public class Driver {
@@ -18,6 +18,7 @@ public class Driver {
 	private Scanner scanner;
 	private GenericDAO<Customer> customerDAO;
 	private GenericDAO<Rental> rentalDAO;
+	private GenericDAO<Staff> StaffDAO = new GenericDAO<Staff>(Staff.class);
 	private GenericDAO<Film> filmDAO = new GenericDAO<Film>(Film.class);
 	private GenericDAO<Actor> actorDAO  = new GenericDAO<Actor>(Actor.class);
 	
@@ -43,11 +44,10 @@ public class Driver {
 					break;
 				case 4: //TODO most popular movie
 					break;
-				case 5: //TODO most popular categories
+				case 5: 
+					getHighestEmployee();
 					break;
-				case 6: //TODO employee information
-					break;
-				case 7:
+				case 6:
 					getMovies();
 					break;
 				default : 
@@ -56,6 +56,11 @@ public class Driver {
 		}
 	}
 	
+	private void getHighestEmployee() {
+		List<Staff> staffs = StaffDAO.getAll();
+		staffs.forEach(System.out::println);
+	}
+
 	private void getCustomerInfo() {
 		System.out.println("Enter cutomer's Last Name");
 		scanner = new Scanner(System.in);
