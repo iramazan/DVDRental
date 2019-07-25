@@ -45,8 +45,13 @@ public class Staff implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @OneToMany(mappedBy = "staff")
+    @OneToMany
+    @JoinColumn(name = "staff_id")
     private List<Rental> rentals;
+
+    @OneToMany
+    @JoinColumn(name = "staff_id")
+    private List<Payment> payments;
 
     public long getStaffID() {
         return staffID;
@@ -142,6 +147,14 @@ public class Staff implements DatabaseObject {
 
     public void setRentals(List<Rental> rentals) {
         this.rentals = rentals;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     @Override
