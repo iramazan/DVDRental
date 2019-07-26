@@ -4,7 +4,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name="RENTAL")
@@ -33,9 +32,9 @@ public class Rental implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @OneToMany
-    @JoinColumn(name = "rental_id")
-    private List<Payment> payments;
+    /*@OneToMany
+    @JoinColumn(name = "Rental_id")
+    private List<Payment> payments;*/
 
     public long getRentalID() {
         return rentalID;
@@ -93,13 +92,13 @@ public class Rental implements DatabaseObject {
         this.lastUpdate = lastUpdate;
     }
 
-    public List<Payment> getPayments() {
+  /*  public List<Payment> getPayments() {
         return payments;
     }
 
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -3,6 +3,8 @@ package com.m3.training.SQLObject;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
@@ -22,7 +24,7 @@ public class Payment implements DatabaseObject {
     private Long rentalID;
 
     @Column(name="AMOUNT")
-    private long amount;
+    private BigDecimal amount;
 
     @Column(name="PAYMENT_DATE")
     private Date paymentDate;
@@ -31,11 +33,11 @@ public class Payment implements DatabaseObject {
     @Column(name="LAST_UPDATE")
     private Date lastUpdate;
 
-    @ManyToOne
+  /*@ManyToOne
     private Rental rental;
 
     @ManyToOne
-    private Staff staff;
+    private Staff staff;*/
 
     public long getPaymentID() {
         return paymentID;
@@ -69,11 +71,11 @@ public class Payment implements DatabaseObject {
         this.rentalID = rentalID;
     }
 
-    public long getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -93,13 +95,13 @@ public class Payment implements DatabaseObject {
         this.lastUpdate = lastUpdate;
     }
 
-    public Rental getRental() {
+/*    public Rental getRental() {
         return rental;
     }
 
     public void setRental(Rental rental) {
         this.rental = rental;
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -49,9 +49,9 @@ public class Staff implements DatabaseObject {
     @JoinColumn(name = "staff_id")
     private List<Rental> rentals;
 
-    @OneToMany
+/*    @OneToMany
     @JoinColumn(name = "staff_id")
-    private List<Payment> payments;
+    private List<Payment> payments;*/
 
     public long getStaffID() {
         return staffID;
@@ -149,28 +149,20 @@ public class Staff implements DatabaseObject {
         this.rentals = rentals;
     }
 
-    public List<Payment> getPayments() {
+/*    public List<Payment> getPayments() {
         return payments;
     }
 
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
     }
-
+*/
     @Override
     public String toString() {
         return "Staff{" +
                 "staffID=" + staffID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", addressID=" + addressID +
-                ", picture=" + picture +
-                ", email='" + email + '\'' +
-                ", storeID='" + storeID + '\'' +
-                ", active=" + active +
-                ", userName='" + userName + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", rentals=" + rentals +
                 '}';
     }
 }

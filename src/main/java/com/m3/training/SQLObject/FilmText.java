@@ -1,7 +1,6 @@
 package com.m3.training.SQLObject;
 
 import javax.persistence.*;
-import java.sql.Clob;
 
 @Entity
 @Table(name="FILM_TEXT")

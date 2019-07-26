@@ -3,8 +3,6 @@ package com.m3.training.DAO;
 import com.m3.training.SQLObject.DatabaseObject;
 
 import javax.persistence.*;
-import java.lang.annotation.Annotation;
-import java.sql.Clob;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +13,6 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
     private final String tableName;
 
     public GenericDAO(Class<T> typeParamClass) {
-        // TODO: Add connection to properties file
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracle-connection");
         entityManager = emf.createEntityManager();
         this.typeParamClass = typeParamClass;
@@ -30,7 +27,6 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
 
     @Override
     public List<T> getAll() {
-        // TODO: Add to properties file
         return entityManager
                 .createQuery("SELECT a FROM " + tableName + " a", typeParamClass)
                 .getResultList();
@@ -51,7 +47,6 @@ public class GenericDAO<T extends DatabaseObject> implements CRUD<T>, AutoClosea
     }
 
     public <P> List<T> getForParam(String columnName, P columnVal) {
-    /*	System.out.println(this.tableName);*/
         return entityManager
                 .createQuery("FROM " + this.tableName + " E WHERE E." + columnName + " = '" + columnVal + "'", typeParamClass)
                 .getResultList();
